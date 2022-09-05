@@ -40,68 +40,16 @@ i=0
 last_min_check = -1
 
 while True:
-    # stat = "ON"
-    stat = Status.find_status()
-    while "ON" in stat:
-        time_min = datetime.now().strftime("%M")
-        stat = Status.find_status()
-        if x == 0:
-            mt5_server.login(account=account_data.account,password=account_data.password,server=account_data.server)
-            y=0
-            print("system activated at :"+str(time_now()))
-            x=1
+
         if time_min in intervals and  time_min != last_min_check:
-            open_orders = mt5_server.orders_open()
             last_min_check = time_min
-            initialize()
-            print(time_now())
-            print("searching for opportunities ...")
-            # time.sleep(1)
-            for sym in symbols:
-                if sym.name not in open_orders:
-                    if  sym.select and sym.visible and sym.trade_mode != 0: 
-                        check_market.check_market_to_open(symbol=sym.name)
-                        ema.EmaCross(symbol=sym.name,time_frame=mt5.TIMEFRAME_M5,numbre_candle=100,ema_low=12,ema_high=26)                                
-                else:
-                    if  sym.select and sym.visible and sym.trade_mode != 0: 
-                        # check_market.check_market_to_close(symbol=sym.name)
-                        print("...")
+            message = "heloooooooooooooo"
+            bot_token  = "5519021114:AAHKSxETRcHWdDY8De-2HiqZX27NlZ0GSiw"
+            bot_chat_id = "-1001646447755"
+            send_text = "https://api.telegram.org/bot"+bot_token+"/sendmessage?chat_id="+bot_chat_id+"&parse_mode=Markdown&text="+message
 
-            print("-----------------------------------------------")
-            print("watting for closing another candle")
-
-
-    if stat == "OFF":
-        if y==0:
-            x=0
-            print("system disactivated at :"+str(time_now()))
-            y=1
-
-mt5.shutdown()
-
-# time_now = datetime.now()
-# time_min = time_now.strftime("%M")
-# time_sc = time_now.strftime("%S")
-
-# for interval in intervals:
-#     if interval == time_min and time_sc >= 3 :
-#         print(time_min)
-
-
-
-
-
-
-
-# add_plot = [mpl.make_addplot(rates_frame["rsi"].tail(500),ylabel="RSI",panel=1,type="line"),
-#                  mpl.make_addplot(rates_frame["ema"].tail(500),ylabel="EMA",type="line"),
-#                  mpl.make_addplot(rates_frame["bay_open"].tail(500),panel=0,type="scatter",color="g",marker="^"),
-#                  mpl.make_addplot(rates_frame["bay_close"].tail(500),panel=0,type="scatter",color="r",marker="^"),
-#                  mpl.make_addplot(rates_frame["sell_open"].tail(500),panel=0,type="scatter",color="r",marker="v"),
-#                  mpl.make_addplot(rates_frame["sell_close"].tail(500),panel=0,type="scatter",color="g",marker="v")]
-
-# mpl.plot(rates_frame.tail(500),addplot=add_plot,type="candle",style="yahoo",volume=False,title=sym+" price",ylabel="price")
-
+            response = requests.get(send_text)
+    
 
 
 
