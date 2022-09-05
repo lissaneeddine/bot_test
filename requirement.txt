@@ -1,0 +1,5 @@
+talib
+telepot
+MetaTrader5
+matplotlib
+pandas
