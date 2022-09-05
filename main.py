@@ -2,12 +2,6 @@ import time
 from datetime import datetime
 
 
-
-def initialize():
-    if not mt5.initialize():
-        print("initialize() failed, error code =",mt5.last_error())
-        quit()
-
 intervals = [ "00" , "05" , "10" , "15" , "20" , "25" , "30" , "35" , "40" , "45" , "50" , "55" ]
 
 
