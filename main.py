@@ -1,16 +1,5 @@
-import account_data
-import check_market
-import pandas as pd
-import mt5_server
 import time
-import matplotlib.pyplot as plt
-import talib as ta
 from datetime import datetime
-import MetaTrader5 as mt5
-from database import Status
-from strategies import ema
-import configparser
-import telepot
 
 
 
@@ -19,22 +8,7 @@ def initialize():
         print("initialize() failed, error code =",mt5.last_error())
         quit()
 
-def time_now():
-    time = datetime.now()
-    time = time.strftime("%H:%M:%S  | %d-%m-%Y")
-    return time
-
-
-initialize()
-# interval = [ 00 , 05 , 10 , 15 , 20 , 25 , 30 , 35 , 40 , 45 , 50 , 55 ]
 intervals = [ "00" , "05" , "10" , "15" , "20" , "25" , "30" , "35" , "40" , "45" , "50" , "55" ]
-symbols=mt5.symbols_get()
-df_sym = pd.DataFrame(symbols)
-
-
-x=0
-y=0
-i=0
 
 
 last_min_check = -1
