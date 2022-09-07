@@ -17,9 +17,8 @@ intervals = [ "00" , "05" , "10" , "15" , "20" , "25" , "30" , "35" , "40" , "45
 last_min_check = -1
 
 while True:
-
-        if time_min in intervals and  time_min != last_min_check:
-            last_min_check = time_min
+#         if time_min in intervals and  time_min != last_min_check:
+#             last_min_check = time_min
             sendmessage()
     
     
